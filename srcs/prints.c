@@ -6,7 +6,7 @@
 /*   By: hle-roi <hle-roi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 11:33:31 by hle-roi           #+#    #+#             */
-/*   Updated: 2023/10/20 15:53:18 by hle-roi          ###   ########.fr       */
+/*   Updated: 2023/10/20 18:11:47 by hle-roi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,9 +85,19 @@ void	put_unsigned_int(unsigned int n, int *count)
 void	print_hex(unsigned long n, int *count)
 {
 	if (n / 16)
+	{
 		print_hex(n / 16, count);
+		if (*count < 0)
+			return ;
+	}
 	if (n % 16 < 10)
+	{
 		ft_putchar(n % 16 + '0', count);
+		if (*count < 0)
+			return ;
+	}
 	else
 		ft_putchar(n % 16 + 'a' - 10, count);
+	if (*count < 0)
+		return ;
 }
